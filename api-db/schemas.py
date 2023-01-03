@@ -1,24 +1,49 @@
 from pydantic import BaseModel
 
 
-class ItemBase(BaseModel):
-    title: str
-    description: str | None = None
+class NumberUpdate(BaseModel):
+    phonenumber: str
+    relation: str
 
 
-class ItemCreate(ItemBase):
+class NumberBase(BaseModel):
+    phonenumber: str
+    relation: str
+
+
+class NumberCreate(NumberBase):
     pass
 
 
-class Item(ItemBase):
+class Number(NumberBase):
     id: int
-    owner_id: int
+    contacts_id: int
+    users_id: int
+
+    class Config:
+        orm_mode = True
+
+
+class ContactBase(BaseModel):
+    full_name: str
+    email: str | None = None
+
+
+class ContactCreate(ContactBase):
+    pass
+
+
+class Contact(ContactBase):
+    id: int
+    users_id: int
+    numbers: list[Number] = []
 
     class Config:
         orm_mode = True
 
 
 class UserBase(BaseModel):
+    full_name: str
     email: str
 
 
@@ -28,8 +53,7 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
-    is_active: bool
-    items: list[Item] = []
+    contacts: list[Contact] = []
 
     class Config:
         orm_mode = True
