@@ -1,6 +1,6 @@
 version: "3.9"
 services:
- api-db:
+ contacts-backup-api:
   image: tarov/db-api
   ports:
     - "8000:8000"
