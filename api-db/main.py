@@ -61,20 +61,20 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/users/", response_model=list[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
 
 @app.get("/user/{user_id}", response_model=schemas.User)
-def read_user(user_id: int, db: Session = Depends(get_db)):
+def read_user(user_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return db_user
 
 @app.delete("/user/{user_id}")
-def delete_user(user_id: int, db: Session = Depends(get_db)):
+def delete_user(user_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
@@ -97,7 +97,7 @@ def create_contact_for_user(user_id: int, contact: schemas.ContactCreate, db: Se
 
 
 @app.get("/contacts/", response_model=list[schemas.Contact])
-def read_contacts(skip: int = 0, limit: int = 50, db: Session = Depends(get_db)):
+def read_contacts(skip: int = 0, limit: int = 50, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     contacts = crud.get_contacts(db, skip=skip, limit=limit)
     return contacts
 
@@ -115,7 +115,7 @@ def create_number_for_contact(user_id: int, contact_id: int, number: schemas.Num
 
 
 @app.get("/numbers/", response_model=list[schemas.Number])
-def read_numbers(user: int, contact: int, db: Session = Depends(get_db)):
+def read_numbers(user: int, contact: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     number = crud.get_number_by_user(db, user_id=user, contact_id=contact)
     if number is None:
         raise HTTPException(status_code=404, detail="Number not found")
@@ -124,7 +124,7 @@ def read_numbers(user: int, contact: int, db: Session = Depends(get_db)):
 
 
 @app.put("/number/{number_id}", response_model=schemas.Number)
-def update_number(number_id: int, number: schemas.NumberUpdate, db: Session = Depends(get_db)):
+def update_number(number_id: int, number: schemas.NumberUpdate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     db_number = crud.get_number(db, number_id=number_id)
     if db_number is None:
         raise HTTPException(status_code=400, detail="Number doesn't exist")
