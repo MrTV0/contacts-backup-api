@@ -26,15 +26,18 @@ Hierdoor word een enkele gebruiker getoond met al de contacten van die gebruiker
 ![Get_User](https://user-images.githubusercontent.com/57659923/210568730-454a58d5-5e6c-4904-be1d-41850a5517a5.png)
 
 ### Get al de contacten
-
+![Get_Contacts](https://user-images.githubusercontent.com/57659923/211242827-64b647c0-31be-4926-95fd-ca52e0cb8a35.png)
 
 ### Get al de telefoonnummers
-
+![Get_Numbers](https://user-images.githubusercontent.com/57659923/211242836-00a6b1c5-b394-4b92-8e5d-e3faf7a165b1.png)
 
 ### Put als
+![Put_Number](https://user-images.githubusercontent.com/57659923/211242844-326a732e-cf4b-45ba-999a-9c790dcc5820.png)
 
 ## Tests
+Al de GET en niet GET (POST, PUT, DELETE) endpoints zijn getest op meerdere scenarios.
 ![All_Tests](https://user-images.githubusercontent.com/57659923/211242569-1d2dbee0-0053-46c3-b333-a46bd417d3e4.png)
 
+## FastAPI
 ![screencapture-contacts-backup-mrtv0-cloud-okteto-net-docs-2023-01-09-05_44_57](https://user-images.githubusercontent.com/57659923/211242502-2bc28413-1e61-405d-900a-18e81d7a2d64.png)
 
