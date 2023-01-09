@@ -36,7 +36,7 @@ Hierdoor worden al de contacten en al de telefoonnummers van die contacten getoo
 ![Get_Contacts](https://user-images.githubusercontent.com/57659923/211242827-64b647c0-31be-4926-95fd-ca52e0cb8a35.png)
 
 ### Get al de telefoonnummers
-Hierdoor worden al de telefoonnummers getoont.
+Hierdoor worden al de telefoonnummers en hun label getoont.
 
 ![Get_Numbers](https://user-images.githubusercontent.com/57659923/211242836-00a6b1c5-b394-4b92-8e5d-e3faf7a165b1.png)
 
