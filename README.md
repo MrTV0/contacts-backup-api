@@ -33,4 +33,8 @@ Hierdoor word een enkele gebruiker getoond met al de contacten van die gebruiker
 
 ### Put als
 
-![screencapture-api-db-mrtv0-cloud-okteto-net-docs-2023-01-03-21_52_50](https://user-images.githubusercontent.com/57659923/210560444-3c47f02e-16d0-499d-8f14-f47e90d71a2f.png)
+## Tests
+![All_Tests](https://user-images.githubusercontent.com/57659923/211242569-1d2dbee0-0053-46c3-b333-a46bd417d3e4.png)
+
+![screencapture-contacts-backup-mrtv0-cloud-okteto-net-docs-2023-01-09-05_44_57](https://user-images.githubusercontent.com/57659923/211242502-2bc28413-1e61-405d-900a-18e81d7a2d64.png)
+
