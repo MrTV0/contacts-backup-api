@@ -1,20 +1,20 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-import os
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+import auth
+
 import crud
 import models
 import schemas
 from database import SessionLocal, engine
+import os
 
-print("We are in the main.......")
 if not os.path.exists('.\sqlitedb'):
-    print("Making folder.......")
     os.makedirs('.\sqlitedb')
 
-print("Creating tables.......")
+#"sqlite:///./sqlitedb/sqlitedata.db"
 models.Base.metadata.create_all(bind=engine)
-print("Tables created.......")
 
 app = FastAPI()
 
@@ -26,6 +26,27 @@ def get_db():
         yield db
     finally:
         db.close()
+
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+
+@app.post("/token")
+def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+    #Try to authenticate the user
+    user = auth.authenticate_user(db, form_data.username, form_data.password)
+    if not user:
+        raise HTTPException(
+            status_code=401,
+            detail=form_data.password,
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    # Add the JWT case sub with the subject(user)
+    access_token = auth.create_access_token(
+        data={"sub": user.email}
+    )
+    #Return the JWT as a bearer token to be placed in the headers
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
 @app.post("/user/", response_model=schemas.User)
