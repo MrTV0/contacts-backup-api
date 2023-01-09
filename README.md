@@ -45,6 +45,11 @@ Bij deze PUT moet je een telefoonnummer en het label voor dat telefoonnummer mee
 
 ![Put_Number](https://user-images.githubusercontent.com/57659923/211242844-326a732e-cf4b-45ba-999a-9c790dcc5820.png)
 
+### Delete een gebruiker
+Bij het deleten van een gebruiker word de gebruiker, al de contacten van die gebruiker en al de telefoonnummers van die contacten van die gebruiker verwijderd.
+
+![Delete_User](https://user-images.githubusercontent.com/57659923/211247413-70807dc0-12fd-4927-b61c-e45f290bcb40.png)
+
 ## Tests
 Al de GET en niet GET (POST, PUT, DELETE) endpoints zijn getest op meerdere scenarios.
 
